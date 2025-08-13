@@ -34,11 +34,36 @@ class bs:
                 parent.left = new
         elif parent.value < new.value:
                 parent.right = new
+   
 
+
+    def delete(self,dele:Node):
+        if self.root is None:
+            self.root = dele
+            return
+        
+        
+        tmp = self.root
+        parent = None 
+
+        while tmp.value != dele.value:
+            if tmp.value > dele.value:
+                parent = tmp
+                tmp = tmp.left
+                
+
+            elif tmp.value < dele.value:
+                parent = tmp
+                tmp = tmp.right
+            else: return
+
+        
+
+        if (parent.value > dele.value) :
+                parent.left = None
+        elif (parent.value < dele.value) :
+                parent.right = None
     
-        
-        
-       
 
     def bfs(self,noeud):
         if noeud is None:
@@ -66,21 +91,34 @@ class bs:
 
 
 chjra = bs()
-E = Node(10)
-F = Node(5)
-G = Node(15)
-H = Node(12)
-I = Node(3)
-J = Node(3)
-K = Node(7)
+A = Node(40)
+B = Node(30)
+C = Node(50)
+D = Node(25)
+E = Node(35)
+F = Node(45)
+G = Node(60)
 
 chjra = bs()
-chjra.insert(E)  # 10 root
-chjra.insert(F)  # 5 left of 10
-chjra.insert(G)  # 15 right of 10
-chjra.insert(H)  # 12 left of 15
-chjra.insert(I)  # 18 right of 15
-chjra.insert(J)  # 3 left of 5
-chjra.insert(K)  # 7 right of 5
+chjra.insert(A)  
+chjra.insert(B)  
+chjra.insert(C)  
+chjra.insert(D) 
+chjra.insert(E)  
+chjra.insert(F) 
+chjra.insert(G)  
 
-chjra.bfs(E)
+chjra.bfs(A)
+print("=========================================================")
+chjra.delete(C)
+print("=========================================================")
+chjra.bfs(A)
+
+'''
+deletion u still have to deal with some stuff 
+
+Node has no children (a leaf) DONE
+Node has one child
+Node has two children
+
+'''
